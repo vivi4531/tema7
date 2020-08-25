@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        article {
+            border: 1px solid black;
+        }
+
+        header {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        footer {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+            <article>
+                <img src="https://placeimg.com/400/300/arch" alt="">
+                <h3>Article 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ipsam, accusantium harum eveniet autem numquam tenetur! Modi laboriosam porro nemo rerum. Vero alias provident, ducimus autem molestiae exercitationem reiciendis magnam nisi et possimus consequatur tenetur dolorem dolor neque officia quod velit maxime libero perspiciatis aspernatur distinctio! Veritatis, molestias dolorum sequi!</p>
+            </article>
+            <article>
+                <img src="https://placeimg.com/400/300/arch" alt="">
+                <h3>Article 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima fugit, et cumque corporis mollitia iusto ab vero aut repellat veniam incidunt adipisci consectetur officiis maxime alias similique cum molestiae accusantium sapiente velit asperiores odio facilis! Fugit consectetur vel dolor commodi, veniam, alias consequuntur magni impedit aliquid quas, obcaecati. Cupiditate, voluptate.</p>
+            </article>
+        </section>
+    </main>
+    <footer>This is the footer</footer>
+
+    <script>
+        const pic1 = document.querySelector("article:nth-child(1) img");
+        const pic2 = document.querySelector("article:nth-child(2) img");
+        console.log(pic1);
+        console.log(pic2);
+        pic1.src = "05.png";
+        pic2.src = "02.png";
+        pic1.alt = "Et billede af noget akvarel";
+        pic2.alt = "Et andet billede af noget akvarel";
+
+        let mainSection = document.querySelector("section");
+        //nyt article element
+        let newArticle = document.createElement("article");
+
+        //nyt H1 element
+        let overskrift = document.createElement("h3");
+
+        //ny brødtekst p
+        let paragraph = document.createElement("p");
+
+        //nyt billede
+        let img = document.createElement("img");
+
+        //tekst til overskriften
+        let overskriftText = document.createTextNode("Ny article (3)");
+
+        //indsæt teksten i overskrift
+        overskrift.appendChild(overskriftText);
+
+        //indsæt brødtekst p
+        let para = document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima fugit, et cumque corporis mollitia iusto ab vero aut repellat veniam incidunt adipisci consectetur officiis maxime alias similique cum molestiae accusantium sapiente velit asperiores odio facilis! Fugit consectetur vel dolor commodi, veniam, alias consequuntur magni impedit aliquid quas, obcaecati. Cupiditate, voluptate.");
+
+        //indsæt billede
+        img.src = "https://placeimg.com/400/300/arch";
+
+        //tilføj billede
+        newArticle.appendChild(img);
+
+        //tilføj overskrift til article
+        newArticle.appendChild(overskrift);
+
+        //tilføj brødtekst p
+        newArticle.appendChild(para);
+
+        //tilføj article til section
+        mainSection.appendChild(newArticle);
+
+    </script>
+</body>
+
+</html>
