@@ -9,52 +9,37 @@
 </head>
 
 <body>
-
+    <h2>Beregn dit CO2 udslip.</h2>
     <p>Angiv længden af din flyrejse i timer.</p>
     <input type="text" id="hours">
     <button>Beregn.</button>
 
 
     <script>
-        document.querySelector("button").addEventListener("click", buttonClick);
+        document.querySelector("button").addEventListener("click", calculateCo2);
 
-        function buttonClick() {
+        function calculateCo2() {
 
-            let timer = document.querySelector("#hours").value;
-            let co2 = document.querySelector("#hours").value * 109;
-            let a = number(timer, co2);
-            let respons = "";
 
-            //Mindre end 100
-            if (co2 < 100) {
-                respons = "Tæt på Thunberg.";
+            let hours = document.querySelector("#hours").value;
+            let co2udslip = 109;
+            let x = co2(hours, co2udslip);
+
+            let result;
+            //let result = `Dit CO2 udslip er ${co2udslip} kg.`;
+
+
+            if (isNaN(hours)) {
+                result = "Skriv venligst et tal.";
+            } else {
+                result = `Dit CO2 udslip er ${x} kg.`;
             }
 
-            //Mellem 100 og 200
-            else if (co2 < 200) {
-                respons = "Ja ja, du behøver ikke at melde dig ud af Å!";
-
-            }
-
-            //Mellem 200 og 600
-            else if (co2 < 600) {
-                respons = "Det er godt for turismen i Nordeuropa.";
-
-            }
-
-            //Over 600
-            else {
-                respons = "Nå ja, vi kan jo altid kolonisere en anden planet...";
-            }
+            console.log(result);
         }
 
-        let result = `Du har fløjet ${timer} timer og har udledt ${co2} kg CO2. ${respons}`;
-
-        console.log(result);
-
-
-        function a(timer, co2) {
-            return timer * co2;
+        function co2(hours, co2udslip) {
+            return hours * co2udslip;
         }
 
     </script>
