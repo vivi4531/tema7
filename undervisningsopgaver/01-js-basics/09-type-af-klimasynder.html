@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        let timer = 10;
+        let co2 = timer * 109;
+        let respons = "";
+
+        //Mindre end 100
+        if (co2 < 100) {
+            respons = "Tæt på Thunberg.";
+        }
+
+        //Mellem 100 og 200
+        else if (co2 < 200) {
+            respons = "Ja ja, du behøver ikke at melde dig ud af Å!";
+
+        }
+
+        //Mellem 200 og 600
+        else if (co2 < 600) {
+            respons = "Det er godt for turismen i Nordeuropa.";
+
+        }
+
+        //Over 600
+        else {
+            respons = "Nå ja, vi kan jo altid kolonisere en anden planet...";
+        }
+
+
+        let result = `Du har fløjet ${timer} timer og har udledt ${co2} kg CO2. ${respons}`;
+
+        console.log(result);
+
+    </script>
+</body>
+
+</html>
