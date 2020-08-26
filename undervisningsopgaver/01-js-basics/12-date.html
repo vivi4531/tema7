@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <p>Din alder</p>
+    <input type="text" id="myAge">
+
+    <p>Din dates alder</p>
+    <input type="text" id="dateAge">
+
+    <button>Beregn</button>
+
+    <script>
+        document.querySelector("button").addEventListener("click", clickButton);
+
+        function clickButton() {
+
+            let me = document.querySelector("#myAge").value / 2 + 7;
+            let you = document.querySelector("#dateAge").value;
+            let respons = "";
+        }
+
+        //Mindre end 15
+        if (me < 15) {
+            respons = "Du er ikke 15 år. Reglen er ikke overholdt.";
+        }
+
+        //Over 15
+        else {
+            respons = "Din date er over 15 år. Reglen er overholdt.";
+        }
+
+
+        let result = `Jeg er ${me} år, og min date er ${you} år. Resultatet er ${respons}.`
+
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

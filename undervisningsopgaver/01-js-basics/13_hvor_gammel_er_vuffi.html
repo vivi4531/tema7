@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <p>Indtast din hunds alder.</p>
+    <input type="text" id="hundealder">
+    <button>Beregn</button>
+
+
+    <script>
+        //Amalies model
+        let hundeliv;
+
+        document.querySelector("button").addEventListener("click", beregn);
+
+        function beregn() {
+            hundeliv = document.querySelector("#hundealder").value;
+            let gammelModel = hundeliv * 7.5;
+            let nyModel = Math.round(16 * Math.log(hundeliv) + 31);
+
+
+            let resultGammelModel = `Efter den gamle model er din hund ${gammelModel} år i menneskeår.`;
+            console.log(resultGammelModel);
+
+            let resultnyModel = `Efter den nye model er din hund ${nyModel} år i menneskeår.`;
+            console.log(resultnyModel);
+        }
+
+
+
+
+
+        //Gammel model
+        let hundealder = 3;
+        let menneskealder = 7;
+        let hund_mennskealder = hundealder * menneskealder;
+        let result = `Hunden er ${hund_mennskealder} år i menneskeår.`
+
+        console.log(result);
+
+
+        //Ny model
+        let nyhundealder = 12;
+        let nymenneskealder = 16;
+        let nyhund_mennskealder = nymenneskealder * Math.log(nyhundealder) + 31;
+        let results = `Hunden er ${nyhund_mennskealder} år i menneskeår.`
+
+        console.log(results);
+
+    </script>
+</body>
+
+</html>
