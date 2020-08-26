@@ -14,34 +14,27 @@
     <input type="text" id="myAge">
 
     <p>Din dates alder</p>
-    <input type="text" id="dateAge">
+    <input type="text" id="yourAge">
 
-    <button>Beregn</button>
+    <button id="checkAge">Check alder</button>
+
+    <button id="calculate">Beregn</button>
 
     <script>
-        document.querySelector("button").addEventListener("click", clickButton);
+        document.querySelector("#checkAge").addEventListener("click", checkDateAge);
+        //Beregn knappen er gemt
+        document.querySelector("#calculate").style.visibility = "hidden";
 
-        function clickButton() {
-
-            let me = document.querySelector("#myAge").value / 2 + 7;
-            let you = document.querySelector("#dateAge").value;
-            let respons = "";
+        //Funktionen tjekker om begge parter er over 15 år.
+        function checkDateAge() {
+            if (document.querySelector("#myAge").value >= 15) {
+                console.log("Du overholder reglen. Din date er ikke gammel nok til at date.");
+            } else if (document.querySelector("#yourAge").value >= 15) {
+                console.log("Din date overholder reglen. Du er ikke gammel nok til at date.");
+            } else {
+                console.log("En eller begge af jer overholder ikke reglen.");
+            }
         }
-
-        //Mindre end 15
-        if (me < 15) {
-            respons = "Du er ikke 15 år. Reglen er ikke overholdt.";
-        }
-
-        //Over 15
-        else {
-            respons = "Din date er over 15 år. Reglen er overholdt.";
-        }
-
-
-        let result = `Jeg er ${me} år, og min date er ${you} år. Resultatet er ${respons}.`
-
-        console.log(result);
 
     </script>
 </body>
