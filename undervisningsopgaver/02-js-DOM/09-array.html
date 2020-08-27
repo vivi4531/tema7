@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul id=”display”></ul>
+
+    <script>
+        let playliste = ["Sound of Music", "Dancing in the Rain", "What a wonderful World", "Lille Peter Edderkop", "Yesterday", "Den Knaldrøde Gummibåd", "Krøller eller hvad", "Ved Landbyens Gadekjær", "Smilende Sussi", "Så længe jeg lever"];
+        playliste.forEach(sang => {
+            document.querySelector("#display").innerHTML += `§{sang} <br>`;
+            console.log(sang);
+        })
+
+    </script>
+</body>
+
+</html>
