@@ -13,30 +13,23 @@
     <article></article>
 
     <script>
-        document.addEventListener("DOMContentLoaded", visDyr);
+        let article;
+        document.addEventListener("DOMContentLoaded", start);
 
-        function visDyr() {
-            let dyr = document.querySelector("article");
+        function start() {
+            console.log("DOMContent er loadet");
+            article = document.querySelector("article");
 
-            console.log(dyr);
+            let dyr = {
+                "Navn": "Gris",
+                "Type": "Pattedyr",
+                "Levested": "Svinefarme",
+                "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            }
+
+            console.log(`Dyr:${dyr.Navn}Type:${dyr.Type}Levested:${dyr.Levested}Billede:${dyr.Billede}`);
+            article.innerHTML = `Dyr:${dyr.Navn}Type:${dyr.Type}Levested:${dyr.Levested} <br><img src="${dyr.Billede}">`;
         }
-
-
-
-        let dyr = {
-            "Navn": "Gris",
-            "Type": "Pattedyr",
-            "Levested": "Svinefarme",
-            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
-        }
-
-        //console.log(dyr);
-
-        //console.log(`dyr: §{dyr.navn} type: §{dyr.type} levested: §{dyr.levested} billede: §{dyr.billede}`);
-
-        //let dyr = dyr.Navn + "" + dyr.Type + ""
-        //dyr.Levested + ""
-        //dyr.Billede;
 
     </script>
 </body>
