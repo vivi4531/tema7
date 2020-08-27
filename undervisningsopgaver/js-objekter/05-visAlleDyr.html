@@ -24,7 +24,7 @@
         let dyr = [{
             "Navn": "Gris",
             "Type": "Pattedyr",
-            "Levested": "Svinefarme",
+            "Levested": "Svinefarm",
             "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
         }, {
             "Navn": "Frø",
@@ -54,11 +54,11 @@
 
         let elm = document.querySelector("article");
         dyr.forEach(dyr => {
-            console.log(dyr.Navn);
-            elm.innerHTML += `${dyr.Navn}`;
+            console.log(dyr);
+            elm.innerHTML += `<p>${dyr.Navn}, ${dyr.Type}, ${dyr.Levested}</p>`;
         })
-
-        console.log(dyr);
+    }
+    console.log(dyr);
 
 </script>
 
