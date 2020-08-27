@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slideshow 1</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Tro på det...</h1>
+    <img src="slideshow_img/img1.png" alt="billede 1">
+    <button>Videre</button>
+    <p>Billeder venligst udlånt af Rasmus Bregnhøi.</p>
+
+
+    <script>
+        //Opret tæller
+        let number = 0;
+
+        //Find billede
+        const image = document.querySelector("img");
+
+        //Opret array
+        let slideshowImages = ["img1.png", "img2.png", "img3.png", "img4.png", "img4.png", "img5.png", "img6.png", "img7.png", "img8.png"];
+
+        //Klik på knap for at skifte til næste billede
+        const button = document.querySelector("button");
+        button.addEventListener("click", nextImage);
+
+        //Funktion til at skifte til næste billedet
+        function nextImage() {
+
+            //Hvis navnet på billedet er mindre end billede array, så skal billedet skifte
+            if (number < 8) {
+
+                //Tæl op
+                number++;
+
+                console.log(slideshowImages[number]);
+
+                image.src = "slideshow_img/" + slideshowImages[number];
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
