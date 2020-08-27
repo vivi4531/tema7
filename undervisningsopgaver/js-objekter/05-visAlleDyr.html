@@ -44,6 +44,12 @@
 
     }]
 
+    let elm = document.querySelector("article");
+    dyr.forEach(dyr => {
+        console.log(dyr.Navn);
+        elm.innerHTML += `${dyr.Navn}`;
+    })
+
     console.log(dyr);
 
 </script>
