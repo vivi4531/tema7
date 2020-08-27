@@ -13,44 +13,52 @@
 </body>
 
 <script>
-    let dyr = [{
-        "Navn": "Gris",
-        "Type": "Pattedyr",
-        "Levested": "Svinefarme",
-        "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
-    }, {
-        "Navn": "Frø",
-        "Type": "Padde",
-        "Levested": "Skoven",
-        "Billede": "http://mabe-kea.dk/E19/pics/frog.png"
+    let article;
+    document.addEventListener("DOMContentLoaded", start);
 
-    }, {
-        "Navn": "Ræv",
-        "Type": "Rovdyr",
-        "Levested": "Hule",
-        "Billede": "http://mabe-kea.dk/E19/pics/fox.png"
+    function start() {
+        console.log("DOMContent er loadet");
+        article = document.querySelector("article");
 
-    }, {
-        "Navn": "Sild",
-        "Type": "Fisk",
-        "Levested": "Havet",
-        "Billede": "http://mabe-kea.dk/E19/pics/sild.png"
 
-    }, {
-        "Navn": "Krokodille",
-        "Type": "Krybdyr",
-        "Levested": "Zoo",
-        "Billede": "http://mabe-kea.dk/E19/pics/kroko.png"
+        let dyr = [{
+            "Navn": "Gris",
+            "Type": "Pattedyr",
+            "Levested": "Svinefarme",
+            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }, {
+            "Navn": "Frø",
+            "Type": "Padde",
+            "Levested": "Skoven",
+            "Billede": "http://mabe-kea.dk/E19/pics/frog.png"
 
-    }]
+        }, {
+            "Navn": "Ræv",
+            "Type": "Rovdyr",
+            "Levested": "Hule",
+            "Billede": "http://mabe-kea.dk/E19/pics/fox.png"
 
-    let elm = document.querySelector("article");
-    dyr.forEach(dyr => {
-        console.log(dyr.Navn);
-        elm.innerHTML += `${dyr.Navn}`;
-    })
+        }, {
+            "Navn": "Sild",
+            "Type": "Fisk",
+            "Levested": "Havet",
+            "Billede": "http://mabe-kea.dk/E19/pics/sild.png"
 
-    console.log(dyr);
+        }, {
+            "Navn": "Krokodille",
+            "Type": "Krybdyr",
+            "Levested": "Zoo",
+            "Billede": "http://mabe-kea.dk/E19/pics/kroko.png"
+
+        }]
+
+        let elm = document.querySelector("article");
+        dyr.forEach(dyr => {
+            console.log(dyr.Navn);
+            elm.innerHTML += `${dyr.Navn}`;
+        })
+
+        console.log(dyr);
 
 </script>
 

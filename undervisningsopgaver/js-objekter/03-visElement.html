@@ -25,23 +25,30 @@
             console.log("DOMContent er loadet");
             article = document.querySelector("article");
 
-            const dyr = {
-                "Navn": "Gris",
-                "Type": "Pattedyr",
-                "Levested": "Svinefarme",
-                "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
-            }
+            const h3 = document.querySelector("article h3");
+            h3.textContent = "Gris";
+            console.log(h3.textContent);
 
-            //console.log(`Dyr:${dyr.Navn}Type:${dyr.Type}Levested:${dyr.Levested}Billede:${dyr.Billede}`);
+            const img = document.querySelector("article img");
+            img.src = "http://mabe-kea.dk/E19/pics/pig.png";
+            img.alt = "gris";
+            console.log(img);
 
-            //article.innerHTML = `Dyr:${dyr.Navn}Type:${dyr.Type}Levested:${dyr.Levested} <br><img src="${dyr.Billede}">`;
+            const p = document.querySelector("article p:nth-child(3)");
+            p.textContent += "pattedyr";
+            console.log(p.textContent);
 
-            const destination = document.querySelector("#dyr");
-            destination.querySelector("h3").textContent = dyr.Navn;
-            destination.querySelector("p").textContent = dyr.Type;
-            destination.querySelector("p").textContent = dyr.Levested;
-            destination.querySelector("img").src = dyr.Billede;
+            const p2 = document.querySelector("article p:nth-child(4)")
+            p2.textContent += "svinefarm";
+            console.log(p2.textContent);
 
+        }
+
+        let dyr = {
+            "Navn": "Gris",
+            "Type": "Pattedyr",
+            "Levested": "Svinefarme",
+            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
         }
 
     </script>
