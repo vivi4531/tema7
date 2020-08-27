@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
+        body {
+            color: burlywood;
+        }
 
     </style>
 </head>
 
 <body>
-    <ul id=”display”></ul>
+    <div id="display"></div>
 
     <script>
-        let playliste = ["Sound of Music", "Dancing in the Rain", "What a wonderful World", "Lille Peter Edderkop", "Yesterday", "Den Knaldrøde Gummibåd", "Krøller eller hvad", "Ved Landbyens Gadekjær", "Smilende Sussi", "Så længe jeg lever"];
-        playliste.forEach(sang => {
-            document.querySelector("#display").innerHTML += `§{sang} <br>`;
-            console.log(sang);
+        let playlist = ["Sound of Music", "Dancing in the Rain", "What a wonderful World", "Lille Peter Edderkop", "Yesterday", "Den Knaldrøde Gummibåd", "Krøller eller hvad", "Ved Landbyens Gadekjær", "Smilende Sussi", "Så længe jeg lever"];
+        playlist.forEach(sang => {
+            document.querySelector("#display").innerHTML += `${sang}<br>`;
         })
 
     </script>
