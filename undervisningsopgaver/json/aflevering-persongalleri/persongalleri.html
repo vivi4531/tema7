@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Persongalleri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
+
+        body {
+            max-width: 1200px;
+            margin: auto;
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        img {
+            max-width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+
+        article {
+            /*            border: 1px solid white;*/
+            margin: 10px;
+            padding: 5px;
+            display: grid;
+            justify-items: center;
+            border-radius: 80px;
+            opacity: 90%;
+
+            background: #ef32d9;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #89fffd, #ef32d9);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #89fffd, #ef32d9);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        header {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 50px;
+            /*background-color: #74ebd5;*/
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+
+        }
+
+        footer {
+            margin: 10px;
+            padding: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: 5vw;
+            color: white;
+            text-shadow: 1px 1px 2px #ef32d9, 0 0 25px #ef32d9, 0 0 5px #ef32d9;
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-weight: lighter;
+            font-size: 3vw;
+            color: white;
+            text-shadow: 1px 1px 2px #89fffd, 0 0 25px #89fffd, 0 0 5px #89fffd;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1vw;
+            color: whitesmoke;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Person Galleri</h1>
+    </header>
+    <main>
+        <template>
+            <article>
+                <h2 class="firstname"></h2>
+                <h2 class="lastname"></h2>
+                <img src="" alt="portræt">
+                <p class="job"></p>
+                <p class="city"></p>
+                <p class="hobby"></p>
+                <p class="pet"></p>
+            </article>
+        </template>
+    </main>
+
+    <footer>
+        <p>© Vivi Mortensen 2020</p>
+    </footer>
+</body>
+
+<script>
+    //Url til google sheets med data
+    const url = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+    //Funktion henter data fra url
+    async function hentData() {
+        const resultat = await fetch(url);
+        const json = await resultat.json();
+        vis(json);
+    }
+
+    function vis(json) {
+        console.log(json);
+
+        const container = document.querySelector("main");
+        const temp = document.querySelector("template");
+
+        json.feed.entry.forEach(person => {
+            const klon = temp.cloneNode(true).content;
+            klon.querySelector(".firstname").textContent = person.gsx$navn.$t;
+            //klon.querySelector(".lastname").textContent = person.gsx$efternavn.$t;
+            klon.querySelector("img").src = person.gsx$billede.$t;
+            klon.querySelector(".job").textContent = "Job: " + person.gsx$job.$t;
+            klon.querySelector(".city").textContent = "By: " + person.gsx$by.$t;
+            klon.querySelector(".hobby").textContent = "Hobby: " + person.gsx$hobby.$t;
+            klon.querySelector(".pet").textContent = "Kældedyr: " + person.gsx$kæledyr.$t;
+
+            container.appendChild(klon);
+        });
+
+    }
+
+    hentData();
+
+</script>
+
+</html>
