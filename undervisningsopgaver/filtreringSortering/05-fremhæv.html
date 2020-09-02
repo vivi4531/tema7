@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Persongalleri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
+
+        body {
+            max-width: 1200px;
+            margin: auto;
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        img {
+            max-width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+
+        article {
+            /*            border: 1px solid white;*/
+            margin: 10px;
+            padding: 5px;
+            display: grid;
+            justify-items: center;
+            border-radius: 80px;
+            opacity: 90%;
+
+            background: #ef32d9;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #89fffd, #ef32d9);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #89fffd, #ef32d9);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        header {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 50px;
+            /*background-color: #74ebd5;*/
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+
+        }
+
+        footer {
+            margin: 10px;
+            padding: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: 5vw;
+            color: white;
+            text-shadow: 1px 1px 2px #ef32d9, 0 0 25px #ef32d9, 0 0 5px #ef32d9;
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-weight: lighter;
+            font-size: 3vw;
+            color: white;
+            text-shadow: 1px 1px 2px #89fffd, 0 0 25px #89fffd, 0 0 5px #89fffd;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1vw;
+            color: whitesmoke;
+        }
+
+        button {
+            display: flex;
+            flex-wrap: nowrap;
+            margin: 0 auto;
+            background-color: #ef32d9;
+        }
+
+        .filter {
+            background-color: #ef32d9;
+        }
+
+        .valgt {
+            background-color: #ef32d9;
+            font-weight: bolder;
+            text-decoration: underline;
+            color: #89fffd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Persongalleri</h1>
+        <h3>Alle</h3>
+        <button class="filter valgt" data-køn="alle">
+            <p>Alle</p>
+        </button>
+        <button class="filter" data-køn="m">
+            <p>Mænd</p>
+        </button>
+        <button class="filter" data-køn="k">
+            <p>Kvinder</p>
+        </button>
+        <button class="filter" data-køn="andet">
+            <p>Andet</p>
+        </button>
+    </header>
+    <main>
+        <template>
+            <article>
+                <h2 class="firstname"></h2>
+                <h2 class="lastname"></h2>
+                <img src="" alt="portræt">
+                <p class="job"></p>
+                <p class="city"></p>
+                <p class="hobby"></p>
+                <p class="pet"></p>
+            </article>
+        </template>
+    </main>
+
+    <footer>
+        <p>© Vivi Mortensen 2020</p>
+    </footer>
+</body>
+
+<script>
+    //document.addEventListener("DOMContentLoaded", start);
+
+    //function start() {
+    //console.log("DOM Content Loadet");
+
+    let personer;
+    let filter = "alle";
+
+    document.addEventListener("DOMContentLoaded", loadJSON);
+    console.log("DOM er loadet");
+
+    //Funktion henter data fra url
+    async function loadJSON() {
+        const JSONData = await fetch("https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json");
+        personer = await JSONData.json();
+        addEventListenersToButtons();
+        visPersoner();
+    }
+
+    function visPersoner() {
+        const container = document.querySelector("main");
+        const temp = document.querySelector("template");
+        container.innerHTML = "";
+
+        personer.feed.entry.forEach(person => {
+            if (filter == "alle" || filter == person.gsx$køn.$t) {
+                console.log(personer);
+
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".firstname").textContent = person.gsx$navn.$t;
+                klon.querySelector("img").src = person.gsx$billede.$t;
+
+                container.appendChild(klon);
+            }
+        })
+
+    }
+
+    function addEventListenersToButtons() {
+        document.querySelectorAll(".filter").forEach((btn) => {
+            btn.addEventListener("click", filterBTNs);
+        });
+    }
+
+    function filterBTNs() {
+        filter = this.dataset.køn;
+        document.querySelector("h3").textContent = this.textContent;
+        document.querySelectorAll(".filter").forEach((btn) => {
+            btn.classList.remove("valgt");
+        })
+        this.classList.add("valgt");
+        visPersoner();
+    }
+</script></html>
