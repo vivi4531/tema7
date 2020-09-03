@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bistro Babushka</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon-16x16.png">
     <link rel="stylesheet" href="https://use.typekit.net/gbm6fag.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,11 +15,13 @@
         <img src="imgs/header1.svg" alt="Bistro Babushka header">
     </div>
 
+    <div id="overskrift">
+        <h1>Alle</h1>
+    </div>
 
-    <h1>Alle</h1>
     <header>
         <button class="filter valgt" data-kategori="alle">
-            Alle retter
+            Alle
         </button>
         <button class="filter" data-kategori="forretter">
             Foretter
@@ -30,7 +34,7 @@
         </button>
     </header>
 
-    <section></section>
+    <section id="oversigt"></section>
 
     <template>
         <article>
@@ -51,12 +55,9 @@
             <div id="luk">X</div>
             <img src="" alt="">
             <h1></h1>
-            <p class="oprindelse"></p>
+            <p class="oprindelse">Oprindelse: </p>
             <p class="lang_info"></p>
-            <p class="pris"></p>
-
-
-            <p>Pris: <span class="pris"></span></p>
+            <p class="pris">Pris: </p>
         </article>
     </section>
 

@@ -20,6 +20,9 @@ async function hentData() {
 }
 
 function vis(menu) {
+    const temp = document.querySelector("template");
+    const container = document.querySelector("section");
+
     console.log(menu);
     container.innerHTML = "";
 
@@ -28,21 +31,33 @@ function vis(menu) {
             console.log(menu);
 
             const klon = temp.cloneNode(true).content;
-            klon.querySelector("h4").textContent = ret.gsx$navn.$t;
+            klon.querySelector("h1").textContent = ret.gsx$navn.$t;
             klon.querySelector("img").src = "/imgs/small/" + ret.gsx$billede.$t + "-sm.jpg";
             klon.querySelector("img").alt = ret.gsx$billede.$t;
 
-            //klon.querySelector(".kort_info").textContent = "Job: " + ret.gsx$kort.$t;
-            //klon.querySelector(".lang_info").textContent = "By: " + ret.gsx$long.$t;
-            //klon.querySelector(".kategori").textContent = "Hobby: " + ret.gsx$kategori.$t;
-            //klon.querySelector(".oprindelse").textContent = "Oprindelse: " +ret.gsx$oprindelse.$t;
-            //klon.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t; + "kr.";
+            //Åbn popup når der klikkes på en article
+            klon.querySelector("article").addEventListener("click", () => visDetaljer(ret));
 
             container.appendChild(klon);
         }
     })
 
 }
+
+//Vis detaljer om ret i popup
+function visDetaljer(ret) {
+    popup.style.display = "block";
+    popup.querySelector("h1").textContent = ret.gsx$navn.$t;
+    popup.querySelector("img").src = "/imgs/large/" + ret.gsx$billede.$t + ".jpg";
+    popup.querySelector("img").alt = ret.gsx$billede.$t;
+    popup.querySelector(".oprindelse").textContent = "Oprindelse: " + ret.gsx$oprindelse.$t;
+    popup.querySelector(".lang_info").textContent = ret.gsx$lang.$t;
+    popup.querySelector(".pris").textContent = "Pris: " + ret.gsx$pris.$t + " kr.";
+}
+
+//Luk popup
+document.querySelector("#luk").addEventListener("click", () => popup.style.display = "none");
+
 
 function addEventListenerToButtons() {
     document.querySelectorAll(".filter").forEach((btn) => {
@@ -52,7 +67,7 @@ function addEventListenerToButtons() {
 
 function filterBTNs() {
     filter = this.dataset.kategori;
-    document.querySelector("h3").textContent = this.textContent;
+    document.querySelector("h1").textContent = this.textContent;
     document.querySelectorAll(".filter").forEach((btn) => {
         btn.classList.remove("valgt");
     })
