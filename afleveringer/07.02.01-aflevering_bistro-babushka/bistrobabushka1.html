@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bistro Babushka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
+
+        body {
+            max-width: 1200px;
+            margin: auto;
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        img {
+            max-width: 50%;
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+
+        article {
+            /*            border: 1px solid white;*/
+            margin: 10px;
+            padding: 5px;
+            display: grid;
+            justify-items: center;
+            border-radius: 80px;
+            opacity: 90%;
+
+            background: #ef32d9;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #89fffd, #ef32d9);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #89fffd, #ef32d9);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        header {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 50px;
+            /*background-color: #74ebd5;*/
+
+            background: #74ebd5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #ACB6E5, #74ebd5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+            box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.9), 0 6px 20px 0 rgba(255, 255, 255, 0.9);
+
+        }
+
+        footer {
+            margin: 10px;
+            padding: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 5px;
+            font-size: 5vw;
+            color: white;
+            text-shadow: 1px 1px 2px #ef32d9, 0 0 25px #ef32d9, 0 0 5px #ef32d9;
+        }
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-weight: lighter;
+            font-size: 3vw;
+            color: white;
+            text-shadow: 1px 1px 2px #89fffd, 0 0 25px #89fffd, 0 0 5px #89fffd;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1vw;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Bistro Babushka</h1>
+    </header>
+    <main>
+        <template>
+            <article>
+                <img src="" alt="billede af ret">
+                <h2 class="name"></h2>
+                <h2 class="short_info"></h2>
+                <p class="long_info"></p>
+                <p class="category"></p>
+                <p class="origin"></p>
+                <p class="price"></p>
+            </article>
+        </template>
+    </main>
+
+    <footer>
+        <p>© Vivi Mortensen 2020</p>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+
+    function start() {
+        console.log("DOM Content Loadet");
+    }
+
+    const container = document.querySelector("main");
+    const temp = document.querySelector("template");
+
+
+    //Url til google sheets med data
+    const url = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+    //Funktion henter data fra url
+    async function hentData() {
+        const resultat = await fetch(url);
+        const json = await resultat.json();
+        vis(json);
+    }
+
+    function vis(json) {
+        console.log(json);
+
+        json.feed.entry.forEach(dish => {
+            const klon = temp.cloneNode(true).content;
+            klon.querySelector("img").src = "imgs/small/" + dish.gsx$billede.$t + "-sm.jpg";
+            klon.querySelector(".name").textContent = dish.gsx$navn.$t;
+            klon.querySelector(".short_info").textContent = "Job: " + dish.gsx$kort.$t;
+            klon.querySelector(".long_info").textContent = "By: " + dish.gsx$long.$t;
+            klon.querySelector(".category").textContent = "Hobby: " + dish.gsx$kategori.$t;
+            klon.querySelector(".origin").textContent = "Hobby: " + dish.gsx$oprindelse.$t;
+            klon.querySelector(".price").textContent = "Pris: " + dish.gsx$pris.$t; + "kr.";
+
+            container.appendChild(klon);
+        });
+
+    }
+
+    hentData();
+</script></html>
