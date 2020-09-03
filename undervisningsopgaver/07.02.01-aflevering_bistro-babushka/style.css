@@ -5,7 +5,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 60px;
+    /*    scroll-padding-top: 60px;*/
 }
 
 img {
@@ -44,7 +44,7 @@ section {
 }
 
 article {
-    width: 250px;
+    width: 350px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     background-color: white;
@@ -181,7 +181,7 @@ button:hover {
 
 #popup article {
     width: 80vw;
-    height: 80vw;
+    height: 50vw;
     margin: 4rem auto;
     background-color: white;
     padding: 50px;
